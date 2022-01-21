@@ -20,7 +20,7 @@ router.get("/recommended", VideoRecommended);
 router.get("/related", GetRelativeVideo);
 router.get("/search", Search);
 router.get("/chanel-related", GetChanelRelativeVideo);
-router.put("/update-comments", verifyToken, UpdateCommentVideo);
+router.patch("/update-comments", UpdateCommentVideo);
 router.patch("/increment-view", IncrementView);
 router.patch("/increment-likedislike", verifyToken, IncrementLikeAndDislike);
 router.delete("/delete", verifyToken, DeleteVideo);

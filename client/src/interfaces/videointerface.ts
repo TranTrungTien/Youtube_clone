@@ -14,7 +14,7 @@ export interface IVideo {
   description: string;
   like: number;
   dislike: number;
-  comment?: IComment[];
+  comments?: IComment[];
   views: number;
   mimeType: string;
   createdAt?: string;

@@ -1,4 +1,9 @@
-import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
+import {
+  createAsyncThunk,
+  createSlice,
+  PayloadAction,
+  SerializedError,
+} from "@reduxjs/toolkit";
 import axios from "axios";
 import { IChanel } from "../interfaces/chanelinterface";
 
@@ -25,7 +30,7 @@ export const getChanel = createAsyncThunk<IChanel>(
 type ChanelState = {
   loading: boolean;
   user: IChanel | null;
-  error: Error | null;
+  error: SerializedError | null;
 };
 
 const initialState: ChanelState = {
@@ -58,9 +63,9 @@ const chanelSlice = createSlice({
         state.user = action.payload;
       }
     );
-    builder.addCase(getChanel.rejected, (state) => {
+    builder.addCase(getChanel.rejected, (state, action) => {
       state.loading = false;
-      state.error = new Error("can not get my chanel");
+      state.error = action.error;
     });
   },
 });
