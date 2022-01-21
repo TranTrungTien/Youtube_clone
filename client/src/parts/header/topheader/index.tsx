@@ -14,10 +14,10 @@ const TopHeader = ({ searchQuery }: TopHeaderProps) => {
   const navigation = useNavigate();
   const [openOptions, setOpenOptions] = useState(false);
   useEffect(() => {
-    if (!chanel) {
+    if (!chanel.user && !chanel.error) {
       dispatch(getChanel());
     }
-  }, [dispatch, chanel]);
+  }, [dispatch, chanel.user, chanel.error]);
 
   const onSearch = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -113,7 +113,8 @@ const TopHeader = ({ searchQuery }: TopHeaderProps) => {
       </div>
       <div className="hidden sm:flex flex-1  justify-center items-center space-x-4 w-full">
         <form
-          autoComplete={"false"}
+          autoComplete="off"
+          autoCorrect="false"
           onSubmit={onSearch}
           className="flex-1 flex justify-center items-center border rounded-sm border-lightgray_323232 h-7"
         >
@@ -158,9 +159,9 @@ const TopHeader = ({ searchQuery }: TopHeaderProps) => {
                   <i className="fas fa-search"></i>
                 </button>
               </div>
-              <button
+              <div
                 onClick={() => setOpenOptions(!openOptions)}
-                className="relative w-6 h-6"
+                className="relative w-6 h-6 cursor-pointer"
               >
                 {!chanel.user?.imageProfileUrl ? (
                   <div className="w-6 h-6 rounded-full bg-pink-700  grid place-content-center">
@@ -178,7 +179,7 @@ const TopHeader = ({ searchQuery }: TopHeaderProps) => {
                   </div>
                 )}
                 {openOptions && <ChanelOptions chanel={chanel.user} />}
-              </button>
+              </div>
             </div>
           ) : (
             <div className="flex justify-end items-center">

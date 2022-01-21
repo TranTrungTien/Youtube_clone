@@ -68,7 +68,10 @@ const Video = () => {
                 <div className="block md:hidden text-xs my-5 text-gray-200">
                   Comment 123445
                 </div>
-                <CommentList commentList={video.video.comment} />
+                <CommentList
+                  commentList={video.video.comments}
+                  video_id={video.video._id}
+                />
               </div>
               <RelatedVideo
                 chanel_id={video.video.chanel._id}

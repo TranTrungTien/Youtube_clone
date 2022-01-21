@@ -1,4 +1,3 @@
-import { IComment } from "./commentinterface";
 import { IChanel } from "./chanelinterface";
 import { Types } from "mongoose";
 

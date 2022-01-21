@@ -1,3 +1,11 @@
 #comment:focus + #input_button {
   display: block;
 }
+#comment:not(:placeholder-shown) + #input_button {
+  display: block;
+}
+#comment:not(:placeholder-shown) + #input_button #comment_btn {
+  background-color: #3ea6ff;
+  color: black;
+  cursor: pointer;
+}

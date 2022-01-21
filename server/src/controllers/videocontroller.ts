@@ -34,7 +34,7 @@ export const CreateVideo = async (req: Request, res: Response) => {
       chanel: chanel_id,
       size: size,
       type: mimeType,
-      comment: [],
+      comments: [],
       poster: posterUrl,
       description: description,
       dislike: 0,
@@ -54,7 +54,7 @@ export const CreateVideo = async (req: Request, res: Response) => {
 export const UpdateCommentVideo = (req: Request, res: Response) => {
   const comment_id = req.body.comment_id as string;
   const video_id = req.body.video_id as string;
-  if (!ObjectId.isValid(comment_id)) {
+  if (!ObjectId.isValid(comment_id) || !ObjectId.isValid(video_id)) {
     return res.status(400).send({ message: "Bad Request" });
   } else {
     try {
